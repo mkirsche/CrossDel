@@ -72,7 +72,7 @@ echo 'out dir: '$OUTDIR
 echo 'bam file: '$bamFile
 echo 'fasta path: '$fastaPath
 numFiles=`ls $OUTDIR/deletes/*.txt.* | wc -l`
-echo 'number of insertions to process: '$numFiles
+echo 'number of deletions to process: '$numFiles
 # Process all insertions in parallel
 parallel --gnu --timeout 500 --jobs 16 "${BINDIR}"/process.sh {} $BINDIR $OUTDIR $bamFile $fastaPath ::: $OUTDIR/deletes/*.txt.*
 
