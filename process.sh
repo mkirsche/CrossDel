@@ -17,7 +17,10 @@ echo 'Processing insertion '$c:$x
 touch $OUTDIR/cert/$x'.txt.'$c'.cert'
 
 # Produce fastq file of reads supporting the insertion based on alignments
-samtools view -h $bamFile  $c:$(($x - 10000))-$(($x + 10000)) | grep -w -f $OUTDIR/deletes/$x.txt.$c > $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
+samtools view -H $bamFile > $OUTDIR/deletes/tmp.txt
+samtools view $bamFile  $c:$(($x - 10000))-$(($x + 10000)) | grep -w -f $OUTDIR/deletes/$x.txt.$c > $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
+cat $OUTDIR/deletes/supportingreadalignments_$x.sam.$c >> $OUTDIR/deletes/tmp.txt
+mv $OUTDIR/deletes/tmp.txt cat $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
 samtools bam2fq $OUTDIR/deletes/supportingreadalignments_$x.sam.$c > $OUTDIR/deletes/supportingreads_$x.fq.$c
 
 # Convert from fastq to fasta format
