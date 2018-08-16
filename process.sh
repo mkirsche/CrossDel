@@ -20,7 +20,7 @@ touch $OUTDIR/cert/$x'.txt.'$c'.cert'
 samtools view -H $bamFile > $OUTDIR/deletes/tmp.txt
 samtools view $bamFile  $c:$(($x - 10000))-$(($x + 10000)) | grep -w -f $OUTDIR/deletes/$x.txt.$c > $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
 cat $OUTDIR/deletes/supportingreadalignments_$x.sam.$c >> $OUTDIR/deletes/tmp.txt
-mv $OUTDIR/deletes/tmp.txt cat $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
+mv $OUTDIR/deletes/tmp.txt $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
 samtools bam2fq $OUTDIR/deletes/supportingreadalignments_$x.sam.$c > $OUTDIR/deletes/supportingreads_$x.fq.$c
 
 # Convert from fastq to fasta format
