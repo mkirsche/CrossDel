@@ -46,7 +46,7 @@ if [[ $vcfFile == /* ]]; then
     vcfPath=$vcfFile
 fi
 
-fastaPath=$WORKINGDIR/$fastaFiles 
+fastaPath=$WORKINGDIR/$fastaFile
 if [[ $fastaFile == /* ]]; then
     fastaPath=$fastaFile
 fi
