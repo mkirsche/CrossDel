@@ -61,7 +61,7 @@ echo '>delete_'$c':'$x > $OUTDIR/seqs/$x.$c.pos
 echo $delete >> $OUTDIR/seqs/$x.$c.fa
 echo $pos >> $OUTDIR/seqs/$x.$c.pos
 
-rm $OUTDIR/samples/"$x".*
+rm $OUTDIR/reference_snippets/"$x".*
 
 # Produce a file to indicate this deletion has finished being processed
 touch $OUTDIR/cert/$x'.txt.'$c'.cert.done'
