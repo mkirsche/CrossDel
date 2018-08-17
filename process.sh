@@ -50,7 +50,7 @@ samtools faidx $fastaFile $c:$left-$(($x + $offset)) > $OUTDIR/reference_snippet
 
 ngmlr -t 4 -r $OUTDIR/reference_snippets/"$x".fa.$c -q $OUTDIR/falconsense_output/"$x".correctedReads.fasta.$c -o $OUTDIR/alignment_of_assembled_reads/"$x".sam.$c
 echo 'aligned reads'
-delete=`java -cp "${BINDIR}" BestDeletionFinder $OUTDIR/alignment_of_assembled_reads/"$x".sam.$c $x $offset 'SEQ'`
+delete=`java -cp "${BINDIR}" BestDeletionFinder $OUTDIR/alignment_of_assembled_reads/"$x".sam.$c $x $offset 'LEN'`
 pos=`java -cp "${BINDIR}" BestDeletionFinder $OUTDIR/alignment_of_assembled_reads/"$x".sam.$c $x $offset 'POS'`
 
 echo $x >> $OUTDIR/refined_deletion_list.txt
