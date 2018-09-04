@@ -21,7 +21,7 @@ samtools view -H $bamFile > $OUTDIR/deletes/tmp.txt
 samtools view $bamFile  $c:$(($x - 10000))-$(($x + 10000)) | grep -w -f $OUTDIR/deletes/$x.txt.$c > $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
 cat $OUTDIR/deletes/supportingreadalignments_$x.sam.$c >> $OUTDIR/deletes/tmp.txt
 mv $OUTDIR/deletes/tmp.txt $OUTDIR/deletes/supportingreadalignments_$x.sam.$c
-java -cp "${BINDIR}" ReadInsertExtraction $OUTDIR/deletes/supportingreadalignments_$x.sam.$c $x > $OUTDIR/deletes/supportingreadswithinsertions_$x.fa.$c
+java -cp "${BINDIR}" ReadDeleteExtraction $OUTDIR/deletes/supportingreadalignments_$x.sam.$c $x > $OUTDIR/deletes/supportingreadswithinsertions_$x.fa.$c
 samtools bam2fq $OUTDIR/deletes/supportingreadalignments_$x.sam.$c > $OUTDIR/deletes/supportingreads_$x.fq.$c
 
 # Convert from fastq to fasta format

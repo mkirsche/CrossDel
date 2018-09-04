@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class ReadInsertExtraction {
+public class ReadDeleteExtraction {
 public static void main(String[] args) throws IOException
 {
 	String readFn = args[0];
@@ -33,12 +33,11 @@ public static void main(String[] args) throws IOException
 		int n = alignmentTypes.length;
 		int startPos = -1, endPos = -1;
 		int bestDist = maxDist+1;
-		boolean softClipped = false;
 		for(int i = 0; i<n; i++)
 		{
 			int len = alignmentLengths[i];
 			char t = alignmentTypes[i];
-			if(t == 'I' || t == 'S')
+			if(t == 'D')
 			{
 				//if(len > 10) System.out.println(len+" "+refIdx);
 				if(len >= minLength && Math.abs(refIdx - pos) <= Math.min(maxDist, bestDist))
@@ -46,8 +45,6 @@ public static void main(String[] args) throws IOException
 					bestDist = Math.abs(refIdx - pos);
 					startPos = idx;
 					endPos = idx + len;
-					if(t == 'S') softClipped = true;
-					else softClipped = false;
 				}
 			}
 			if(t != 'D' && t != 'H') idx += len;
@@ -59,7 +56,6 @@ public static void main(String[] args) throws IOException
 			int endIdx = Math.min(idx, endPos + flank);
 			System.out.println(">" + name);
 			System.out.println(seq.substring(startIdx, endIdx));
-			//System.out.println((whole || softClipped) ? seq : seq.substring(startIdx, endIdx));
 		}
 	}
 	
