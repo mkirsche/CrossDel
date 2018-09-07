@@ -56,7 +56,6 @@ public static void main(String[] args) throws IOException
         }
         else if(posString.length() == 0) continue;
         int p = Integer.parseInt(posString);
-        System.out.println(p);
         posMap.put(id.substring(id.indexOf('_')+1), p);
         while(posInput.hasNext())
         {
@@ -132,8 +131,8 @@ public static void main(String[] args) throws IOException
                 logout.println("faidx failed in "+ch+":"+curPos+" "+deletionLength);
                 continue;
             }
-            seq = seqInput.next();
-            
+	seq = "";
+            while(seqInput.hasNext()) seq += seqInput.next();
             newSeq = seq.substring(0, actualLeft) + seq.substring(actualLeft + deletionLength);
         }
         while(str.hasMoreTokens())

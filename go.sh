@@ -8,7 +8,7 @@ echo $BINDIR
 echo $OUTDIR
 rm -r $OUTDIR/*
 rm -r $OUTDIR
-export _JAVA_OPTIONS="-XX:ParallelGCThreads=8"
+export _JAVA_OPTIONS="-XX:ParallelGCThreads=2"
 javac $BINDIR/*.java
 mkdir $OUTDIR
 mkdir $OUTDIR/falconsense_output
