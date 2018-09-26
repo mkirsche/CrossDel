@@ -67,7 +67,7 @@ echo 'delete: '$delete >> $OUTDIR/refined_deletion_list.txt
 
 echo '>delete_'$c':'$x > $OUTDIR/seqs/$x.$c.fa
 echo '>delete_'$c':'$x > $OUTDIR/seqs/$x.$c.pos
-if [ "$delete" != '' ]
+if [ "$delete" != '-1' ]
 then
     echo $delete >> $OUTDIR/seqs/$x.$c.fa
     echo $pos >> $OUTDIR/seqs/$x.$c.pos
