@@ -78,7 +78,7 @@ parallel --gnu --timeout 500 --jobs 16 "${BINDIR}"/process.sh {} $BINDIR $OUTDIR
 
 wait
 
-#"${BINDIR}"/clean_parallel.sh $BINDIR $OUTDIR $bamFile $fastaFile
+"${BINDIR}"/clean_parallel.sh $BINDIR $OUTDIR $bamFile $fastaFile
 cat $OUTDIR/seqs/*.fa > $OUTDIR/all.seq
 cat $OUTDIR/seqs/*.pos > $OUTDIR/all.pos
 java -cp "${BINDIR}" VCFEditor $OUTDIR/all.seq $OUTDIR/all.pos $vcfPath $fastaPath $WORKINGDIR/$outputFile $DELETE_BEFORE $DELETE_AFTER
